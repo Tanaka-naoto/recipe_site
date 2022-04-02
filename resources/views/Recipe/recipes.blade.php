@@ -1,0 +1,66 @@
+@extends('layouts.app')
+
+@section('content')
+
+
+    @if(session('message'))
+
+        <div class="alert alert-success">{{session('message')}}</div>
+
+    @endif
+
+<div class="container">
+
+    <div class="ml-2" style="text-align: center; font-size: 1.6em; font-weight: bold">
+        {{$category->name}}
+    </div>
+
+
+    @if (count($recipes) == 0)
+    <p style="margin-top: 20px">
+        まだレシピが投稿されていません。
+    </p>
+
+    @else
+
+    <div class="row g-3 mt-3 mb-5">
+        @foreach ($recipes as $recipe)
+            <div class="col-md-4">
+                <a href="{{ route('recipe.show', $recipe) }}" style="text-decoration: none; color: black">
+                <div class="card">
+                    @if($recipe->image)
+                        <div class="card-img-top image-card image-card-1" style="background: url({{asset('storage/images/'.$recipe->image)}})no-repeat center center; background-size:cover;"></div>
+                    @else
+                        <div class="card-img-top image-card image-card-1">NO IMAGE</div>
+                    @endif
+                    <div class="card-body"> <span class="text-uppercase text-danger fw-bold fs-6">{{$recipe->title}}</span>
+                        <p class="card-text">
+                            {{Str::limit($recipe->body, 40, '..')}}
+                        </p>
+
+                        <div class="data_name d-flex">
+                            <small class="text-dark">
+                                {{$recipe->created_at->diffForHumans()}}
+                            </small>
+
+                            <small class="text-dark" style="display: block; margin-left: auto;">
+                                {{$recipe->user->name}}
+                            </small>
+                        </div>
+
+                        <!-- いいね処理-->
+                        @include('../layouts/components/.like',[
+                            'recipe' => $recipe
+                        ])
+
+                    </div>
+                </div>
+                </a>
+            </div>
+        @endforeach
+    </div>
+    @endif
+</div>
+
+@endsection
+
