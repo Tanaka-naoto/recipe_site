@@ -12,7 +12,7 @@
 <div class="container">
 
     <div class="ml-2" style="text-align: center; font-size: 1.6em; font-weight: bold">
-        カテゴリー一覧
+        カテゴリ一覧
     </div>
 
     <div class="row g-3 mt-3 mb-5">
