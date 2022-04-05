@@ -26,7 +26,7 @@
 
                     <div class="card">
 
-                            <div class="card-img-top image-card" style="background: url({{asset('storage/avatar/default.jpg')}})no-repeat center center; background-size:cover;"></div>
+                            <div class="card-img-top image-card" style="background: url({{asset('storage/images/default.jpg')}})no-repeat center center; background-size:cover;"></div>
 
 
                         <div class="card-body">

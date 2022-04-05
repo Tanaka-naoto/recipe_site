@@ -185,7 +185,7 @@ class RecipeController extends Controller
         return redirect()
 
             ->route('recipe.show',compact('recipe'))
-            ->with('message', 'レシピを公開しまあｓｄふぁｓｄｆした');
+            ->with('message', 'レシピを公開しました');
 
     }
 
@@ -198,7 +198,7 @@ class RecipeController extends Controller
         Storage::delete('public/images/'.$recipe->image);
         $recipe->delete();
         return redirect()
-            ->route('recipe.index',compact('category','tinko'))
+            ->route('recipe.index',compact('category'))
             ->with('message', 'レシピを削除しました');
 
     }
